@@ -1,5 +1,3 @@
-library(tidyverse)
-
 die <- 1:6
 
 n_dice <- 4
