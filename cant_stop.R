@@ -2,7 +2,7 @@ die <- 1:6
 
 n_dice <- 4
 
-my_numbers <- c(4, 5, 8)
+my_numbers <- c(6,7,8)
 
 n_sims <- 10000
 
@@ -17,8 +17,8 @@ for (sim_count in 1: n_sims) {
   )
   
   dice_roll_sums <- c()
-  for (counter_1 in 1 : n_dice - 1) {
-    for (counter_2 in counter_1 + 1 : n_dice) {
+  for (counter_1 in seq(1, n_dice - 1)) {
+    for (counter_2 in seq(counter_1 + 1, n_dice)) {
       dice_roll_sums <- append(
         dice_roll_sums,
         dice_roll[counter_1] + dice_roll[counter_2]
@@ -27,9 +27,6 @@ for (sim_count in 1: n_sims) {
   }
   
   unique_sums <- unique(dice_roll_sums)
-  
-  # not sure where the NAs are coming from
-  unique_sums <- unique_sums[!is.na(unique_sums)]
   
   hit <- sum(my_numbers %in% unique_sums) > 0
   
